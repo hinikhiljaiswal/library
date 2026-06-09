@@ -41,6 +41,12 @@ Replace `<username>`, `<password>`, and `<cluster>` with your Atlas values. If y
 
 The `<cluster>` value must be the full Atlas host, such as `cluster0.abcde.mongodb.net`. Do not use a port, database name, or numeric value like `54321` in that position.
 
+On Render, set `MONGODB_URI` as one full value. The database name must come after `.mongodb.net/`, not after `?`:
+
+```text
+mongodb+srv://USER:PASSWORD@cluster0.abcde.mongodb.net/library-seat-booking?retryWrites=true&w=majority
+```
+
 ## Stripe Testing
 
 This starter enables `STRIPE_MOCK_MODE=true` by default. In mock mode, checkout redirects directly to the success page and marks the booking paid, so you can test the full booking and admin workflow without a real Stripe key.
