@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: library-seat-booking-api
+    runtime: node
+    buildCommand: npm install && npm run build:api
+    startCommand: npm run start:api
+    envVars:
+      - key: PORT
+        value: 4001
+      - key: MONGODB_URI
+        sync: false
+      - key: WEB_APP_URL
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_MOCK_MODE
+        value: "true"
+      - key: ADMIN_PIN
+        sync: false
+
+  - type: web
+    name: library-seat-booking-web
+    runtime: node
+    buildCommand: npm install && npm run build:web
+    startCommand: npm run start:web
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        sync: false

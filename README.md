@@ -21,6 +21,28 @@ Default local admin PIN:
 123456
 ```
 
+## Render Deployment
+
+Do not use `npm run dev` on Render. Dev mode deletes or rebuilds `.next` while the server is running, which can cause `required-server-files.json` and CSS parse errors.
+
+Deploy as two Render web services:
+
+API service:
+
+```bash
+npm install && npm run build:api
+npm run start:api
+```
+
+Web service:
+
+```bash
+npm install && npm run build:web
+npm run start:web
+```
+
+Set `NEXT_PUBLIC_API_URL` on the web service to the public URL of the API service.
+
 ## Required Services
 
 - MongoDB Atlas connection string in `apps/api/.env`.
