@@ -5,6 +5,13 @@ function getApiUrl() {
     throw new Error('NEXT_PUBLIC_API_URL must be the public API URL in production.');
   }
 
+  if (process.env.RENDER === 'true') {
+    const url = new URL(value);
+    if (url.hostname.endsWith('.onrender.com') && url.port) {
+      throw new Error('NEXT_PUBLIC_API_URL must not include a port for Render public URLs.');
+    }
+  }
+
   return value;
 }
 
