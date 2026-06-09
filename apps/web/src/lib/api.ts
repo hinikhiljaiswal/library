@@ -1,4 +1,14 @@
-export const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+function getApiUrl() {
+  const value = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4001';
+
+  if (process.env.RENDER === 'true' && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?/i.test(value)) {
+    throw new Error('NEXT_PUBLIC_API_URL must be the public API URL in production.');
+  }
+
+  return value;
+}
+
+export const apiUrl = getApiUrl();
 
 export type SeatStatus = 'available' | 'pending' | 'booked';
 
