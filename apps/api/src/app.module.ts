@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AdminModule } from './admin/admin.module';
 import { BookingModule } from './booking/booking.module';
+import { getMongoDbUri } from './config/mongodb-uri';
 import { PaymentModule } from './payment/payment.module';
 import { SeatModule } from './seat/seat.module';
 
@@ -13,7 +14,7 @@ import { SeatModule } from './seat/seat.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
-        uri: config.get<string>('MONGODB_URI'),
+        uri: getMongoDbUri(config.get<string>('MONGODB_URI')),
       }),
     }),
     BookingModule,

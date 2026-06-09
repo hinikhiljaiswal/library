@@ -39,6 +39,8 @@ MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/library-se
 
 Replace `<username>`, `<password>`, and `<cluster>` with your Atlas values. If your password contains special characters, URL-encode it before putting it in the connection string.
 
+The `<cluster>` value must be the full Atlas host, such as `cluster0.abcde.mongodb.net`. Do not use a port, database name, or numeric value like `54321` in that position.
+
 ## Stripe Testing
 
 This starter enables `STRIPE_MOCK_MODE=true` by default. In mock mode, checkout redirects directly to the success page and marks the booking paid, so you can test the full booking and admin workflow without a real Stripe key.
