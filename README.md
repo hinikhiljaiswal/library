@@ -23,9 +23,21 @@ Default local admin PIN:
 
 ## Required Services
 
-- MongoDB running locally or a MongoDB Atlas connection string.
+- MongoDB Atlas connection string in `apps/api/.env`.
 - Stripe secret key in `apps/api/.env`.
 - Stripe webhook secret is optional for local UI testing, but recommended for production.
+
+## MongoDB Atlas
+
+Create a MongoDB Atlas cluster, add your current IP address in Network Access, then create a database user.
+
+Update `apps/api/.env`:
+
+```text
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/library-seat-booking?retryWrites=true&w=majority
+```
+
+Replace `<username>`, `<password>`, and `<cluster>` with your Atlas values. If your password contains special characters, URL-encode it before putting it in the connection string.
 
 ## Stripe Testing
 
