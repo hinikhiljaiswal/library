@@ -41,7 +41,7 @@ Build Command: npm run render:web:build
 Start Command: npm run render:web:start
 ```
 
-Render installs dependencies before running the Build Command, so do not put `npm install` in the Start Command.
+The build scripts install dev dependencies because TypeScript build tools are needed during Render builds. Do not put `npm install` in the Start Command.
 
 The web service Start Command must not be `npm install && npm run build`. That command builds the app and exits, so Render will report "No open ports detected".
 
