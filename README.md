@@ -25,21 +25,25 @@ Default local admin PIN:
 
 Do not use `npm run dev` on Render. Dev mode deletes or rebuilds `.next` while the server is running, which can cause `required-server-files.json` and CSS parse errors.
 
-Deploy as two Render web services:
+Deploy as two Render web services. In the Render dashboard, set the commands exactly like this.
 
 API service:
 
 ```bash
-npm install && npm run build:api
-npm run start:api
+Build Command: npm run render:api:build
+Start Command: npm run render:api:start
 ```
 
 Web service:
 
 ```bash
-npm install && npm run build:web
-npm run start:web
+Build Command: npm run render:web:build
+Start Command: npm run render:web:start
 ```
+
+Render installs dependencies before running the Build Command, so do not put `npm install` in the Start Command.
+
+The web service Start Command must not be `npm install && npm run build`. That command builds the app and exits, so Render will report "No open ports detected".
 
 Set `NEXT_PUBLIC_API_URL` on the web service to the public URL of the API service.
 
