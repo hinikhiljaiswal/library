@@ -5,6 +5,8 @@ services:
     buildCommand: npm run render:api:build
     startCommand: npm run render:api:start
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: PORT
         value: 4001
       - key: MONGODB_URI
@@ -26,5 +28,7 @@ services:
     buildCommand: npm run render:web:build
     startCommand: npm run render:web:start
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: NEXT_PUBLIC_API_URL
         sync: false

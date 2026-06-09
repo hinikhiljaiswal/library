@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "clean:web": "rm -rf apps/web/.next",
-    "dev": "npm run clean:web && (npm run dev:api & npm run dev:web)",
+    "dev": "if [ \"$RENDER\" = \"true\" ] || [ \"$NODE_ENV\" = \"production\" ]; then npm run start:web; else npm run clean:web && (npm run dev:api & npm run dev:web); fi",
     "dev:api": "npm --workspace apps/api run start:dev",
     "dev:web": "npm --workspace apps/web run dev",
     "build:api": "npm --workspace apps/api run build",

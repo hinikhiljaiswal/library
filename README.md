@@ -45,6 +45,8 @@ The build scripts install dev dependencies because TypeScript build tools are ne
 
 The web service Start Command must not be `npm install && npm run build`. That command builds the app and exits, so Render will report "No open ports detected".
 
+The web service should also not run `next dev` on Render. If Render logs `Compiling / ...` followed by a `globals.css` parse error, the service is still using a dev command. Use `npm run render:web:start` as the Start Command.
+
 Set `NEXT_PUBLIC_API_URL` on the web service to the public URL of the API service.
 
 ## Required Services
